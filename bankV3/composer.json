@@ -1,0 +1,16 @@
+{
+    "name": "bank/v3",
+    "description": "phpDb",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BankV3\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "y"
+        }
+    ],
+    "require": {}
+}
