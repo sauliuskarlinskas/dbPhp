@@ -3,9 +3,9 @@
 namespace BankV3\Controllers;
 
 use BankV3\App;
-//use BankV3\FileWriter;
 use BankV3\Messages;
 use BankV3\OldData;
+use BankV3\IbanId;
 
 class AccountController
 {
@@ -21,8 +21,9 @@ class AccountController
 
     public function create()
     {
+        
         return App::view('account/create', [
-            'pageTitle' => 'create account',
+            'pageTitle' => 'create account'
         ]);
     }
 
@@ -30,32 +31,31 @@ class AccountController
     {
         extract($request);
 
-        $error1 = 0;
-        $error2 = 0;
+        // $error1 = 0;
+        // $error2 = 0;
 
-        if (strlen($name) < 3 || strlen($lastName) < 3) {
-            Messages::addMessage('danger', 'Vardas ir pavardė turi būti bent iš trijų simbolių.');
-            $error1 = 1;
-        }
+        // if (strlen($name) < 3 || strlen($lastName) < 3) {
+        //     Messages::addMessage('danger', 'Vardas ir pavardė turi būti bent iš trijų simbolių.');
+        //     $error1 = 1;
+        // }
 
-        if (!ctype_digit($personalId) || strlen(trim($personalId)) !== 11) {
-            Messages::addMessage('danger', 'Asmens kodą turi sudaryti vienuolika skaičių.');
-            $error2 = 1;
-        }
+        // if (!ctype_digit($personalId) || strlen(trim($personalId)) !== 11) {
+        //     Messages::addMessage('danger', 'Asmens kodą turi sudaryti vienuolika skaičių.');
+        //     $error2 = 1;
+        // }
 
-        if ($error1 || $error2) {
-            OldData::flashData($request);
-            header('Location: /account/create');
-            die;
-        }
+        // if ($error1 || $error2) {
+        //     OldData::flashData($request);
+        //     header('Location: /account/create');
+        //     die;
+        // }
 
         $data = App::get('account');
         $newAccount = [
-            'id' => $id,
             'name' => $name,
-            'lastName' => $lastName,
-            'personalId' => $personalId,
-            'accountNumber' => $accountNumber,
+            'last_name' => $last_name,
+            'personal_id' => $personal_id,
+            'account_number' =>rand(10000000000000000, 99999999999999999),
             'balance' => 0
         ];
         $data->create($newAccount);
@@ -72,18 +72,18 @@ class AccountController
 
         $id = $account['id'];
         $name = $account['name'];
-        $lastName = $account['lastName'];
-        $personalId = $account['personalId'];
-        $accountNumber = $account['accountNumber'];
+        $last_name = $account['last_name'];
+        $personal_id = $account['personal_id'];
+        $account_number = $account['account_number'];
         $balance = $account['balance'];
 
         return App::view('account/edit', [
             'pageTitle' => 'edit balance',
             'id' => $id,
             'name' => $name,
-            'lastName' => $lastName,
-            'personalId' => $personalId,
-            'accountNumber' => $accountNumber,
+            'last_name' => $last_name,
+            'personal_id' => $personal_id,
+            'account_number' => $account_number,
             'balance' => $balance
         ]);
     }

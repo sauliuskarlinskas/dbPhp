@@ -23,14 +23,14 @@
                                     <?= $account['name'] ?>
                                 </td>
                                 <td>
-                                    <?= $account['lastName'] ?>
+                                    <?= $account['last_name'] ?>
                                 </td>
                                 <td>
-                                    <?= $account['personalId'] ?>
+                                    <?= $account['personal_id'] ?>
                                 </td>
                                 <td>
                                     LT:
-                                    <?= $account['accountNumber'] ?>
+                                    <?= $account['account_number'] ?>
                                 </td>
                                 <td>
                                     <?= $account['balance'] ?>€

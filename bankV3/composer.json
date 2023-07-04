@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "BankV3\\": "app/"
+            "BankV3\\": "app/",
+            "App\\DB\\":"app/"
         }
     },
     "authors": [

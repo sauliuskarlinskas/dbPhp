@@ -10,11 +10,11 @@
                     </div>
                     <div>
                         <label class="form-label" for="lastName">Pavardė</label>
-                        <input class="form-label" type="text" name="lastName" id="lastName" required>
+                        <input class="form-label" type="text" name="last_name" id="last_name" required>
                     </div>
                     <div>
                         <label class="form-label" for="personalId">Asmens kodas</label>
-                        <input class="form-label" type="text" name="personalId" id="personalId" required>
+                        <input class="form-label" type="number" name="personal_id" id="personal_id" required>
                     </div>
                     <div class="col m-3">
 

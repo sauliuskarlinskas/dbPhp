@@ -6,7 +6,7 @@ use App\DB\DataBase;
 use PDO;
 
 
-class DatabaseWriter implements DataBase
+class DataBaseWriter implements DataBase
 {
     private $tableName, $pdo;
 
@@ -38,20 +38,24 @@ class DatabaseWriter implements DataBase
         INSERT INTO {$this->tableName} 
         (
             `name`,
-            `lastName`,
-             personalId 
+            `last_name`,
+             `personal_id`,
+             `account_number`,
+             `balance` 
         ) 
         VALUES 
         (
-            ?, ?, ?
+            ?, ?, ?, ?, ?
         )
         ";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             $userData['name'],
-            $userData['description'],
-            $userData['personalId'],
+            $userData['last_name'],
+            $userData['personal_id'],
+            $userData['account_number'],
+            $userData['balance']
         ]);
     }
 
@@ -61,15 +65,13 @@ class DatabaseWriter implements DataBase
             "
         UPDATE {$this->tableName}
         SET 
-            `name` = ?,
-            `description` = ?
+            `balance` = ?
         WHERE `id` = ?
         ";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
-            $userData['name'],
-            $userData['description'],
+            $userData['balance'],
             $userId
         ]);
     }

@@ -1,6 +1,5 @@
 <?php
 namespace BankV3\Controllers;
-
 use BankV3\App;
 use BankV3\Messages;
 use BankV3\OldData;
@@ -24,17 +23,17 @@ class LoginController
         $password = $data['password'] ?? '';
         
 
-        $users = (App::get('users'))->showAll();
+        $user = App::get('bank_users')->getUserByEmailAndPass($email, $password);
 
-        foreach ($users as $user) {
-            if ($user['email'] == $email && $user['password'] == md5($password)) {
+        
+            if ($user) {
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $user['name'];
                 Messages::addMessage('success', 'Sėkmingai prisijungėte');
                 header('Location: /');
                 die;
             }
-        }
+        
         
 
         Messages::addMessage('danger', 'Netinkamas paštas arba slaptažodis');

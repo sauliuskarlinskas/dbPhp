@@ -1,10 +1,11 @@
 <?php
 
 namespace BankV3;
-
+use BankV3\FileWriter;
 use BankV3\Controllers\HomeController;
 use BankV3\Controllers\AccountController;
 use BankV3\Controllers\LoginController;
+use BankV3\DataBaseWriter;
 
 class App {
 
@@ -17,6 +18,16 @@ class App {
         array_shift($url);
 
         return self::router($url);
+    }
+
+    static public function get($table)
+    {
+        if (self::DB == 'file') {
+            return new FileWriter($table);
+        }
+        elseif (self::DB == 'database') {
+            return new DataBaseWriter($table);
+        }
     }
 
     static private function router($url)

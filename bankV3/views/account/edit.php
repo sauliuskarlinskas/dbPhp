@@ -21,14 +21,14 @@
                                 <?= $name ?>
                             </td>
                             <td>
-                                <?= $lastName ?>
+                                <?= $last_name ?>
                             </td>
                             <td>
-                                <?= $personalId ?>
+                                <?= $personal_id ?>
                             </td>
                             <td>
                                 LT:
-                                <?= $accountNumber ?>
+                                <?= $account_number ?>
                             </td>
                             <td>
                                 <?= $balance ?>€
